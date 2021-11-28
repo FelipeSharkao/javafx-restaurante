@@ -7,6 +7,13 @@ public class Prato {
     private double preco;
     private String imagem;
 
+    public Prato(String nome, String ingredientes, double preco, String imagem) {
+        this.nome = nome;
+        this.ingredientes = ingredientes;
+        this.preco = preco;
+        this.imagem = imagem;
+    }
+
     public double getPreco() {
         return preco;
     }

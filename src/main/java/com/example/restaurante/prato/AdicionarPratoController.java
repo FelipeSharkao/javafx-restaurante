@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AdicionarPratoController {
     PratoRepository repo = new PratoRepository();
@@ -25,17 +26,27 @@ public class AdicionarPratoController {
 
     @FXML
     private void salvar() {
-        Prato prato = new Prato();
-        prato.setNome(this.txtNome.getText());
-        prato.setIngredientes(this.txtIngredientes.getText());
-        prato.setPreco(Double.parseDouble(this.txtPreco.getText()));
-        prato.setImagem(this.txtImagem.getText());
+        double preco;
+        try {
+            preco = Double.parseDouble(txtPreco.getText());
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Preço inválido");
+            alert.setContentText("O preço deve ser um número");
+            alert.showAndWait();
+            return;
+        }
+
+        Prato prato = new Prato(
+                this.txtNome.getText(),
+                this.txtIngredientes.getText(),
+                preco,
+                this.txtImagem.getText());
 
         this.service.salvar(prato);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Salvo com sucesso");
-        alert.show();
+        ((Stage) this.txtNome.getScene().getWindow()).close();
     }
 
 }

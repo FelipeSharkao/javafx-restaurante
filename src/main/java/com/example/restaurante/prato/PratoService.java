@@ -15,7 +15,7 @@ public class PratoService {
     }
 
     public void salvar(Prato prato) {
-        ArrayList<String> erros =new ArrayList<>();
+        ArrayList<String> erros = new ArrayList<>();
 
         if (!validator.isValid(prato, erros)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

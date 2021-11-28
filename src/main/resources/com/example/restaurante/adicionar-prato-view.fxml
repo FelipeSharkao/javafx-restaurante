@@ -6,13 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.restaurante.prato.AdicionarPratoController"
-            prefHeight="400.0" prefWidth="600.0">
-    <TextField fx:id="txtNome"/>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.restaurante.prato.AdicionarPratoController" prefHeight="400.0" prefWidth="600.0">
+    <Label text="Nome:" />
+    <TextField fx:id="txtNome" />
+
+    <Label text="Ingredientes:" />
     <TextArea fx:id="txtIngredientes" />
+
+    <Label text="Preço:" />
     <TextField fx:id="txtPreco" />
+
+    <Label text="Imagem:" />
     <TextField fx:id="txtImagem" />
-    <Button onAction="#salvar" text="Salvar"/>
+    
+    <Button onAction="#salvar" text="Salvar" />
 </VBox>

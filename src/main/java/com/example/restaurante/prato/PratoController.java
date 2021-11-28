@@ -42,53 +42,53 @@ public class PratoController implements Initializable {
     @FXML
     TableColumn<Prato, Void> colAction;
 
-    Callback<TableColumn<Prato, Void>, TableCell<Prato, Void>> actionFactory = param -> {
-        return new TableCell<>() {
+    Callback<TableColumn<Prato, Void>, TableCell<Prato, Void>> actionFactory = param -> new TableCell<>() {
 
-            private final Button btn = new Button("Remover");
-            {
-                btn.setOnAction((ActionEvent event) -> {
-                    Prato data = getTableView().getItems().get(getIndex());
-                    remover(data.getId());
-                });
-            }
+        private final Button btn = new Button("Remover");
+        {
+            btn.setOnAction((ActionEvent event) -> {
+                Prato data = getTableView().getItems().get(getIndex());
+                remover(data.getId());
+            });
+        }
 
-            @Override
-            public void updateItem(Void item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(btn);
-                }
+        @Override
+        public void updateItem(Void item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                setGraphic(btn);
             }
-        };
+        }
     };
 
-    Callback<TableColumn<Prato, String>, TableCell<Prato, String>> imgFactory = param -> {
-        return new TableCell<>() {
+    Callback<TableColumn<Prato, String>, TableCell<Prato, String>> imgFactory = param -> new TableCell<>() {
 
-            @Override
-            public void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
 
-                if (empty) {
-                    setGraphic(null);
-                } else {
+            if (empty) {
+                setGraphic(null);
+            } else {
+                try {
                     ImageView img = new ImageView(item);
                     setGraphic(img);
+                } catch (IllegalArgumentException e) {
+                    setGraphic(null);
                 }
             }
+        }
 
-        };
     };
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.colNome.setCellValueFactory(new PropertyValueFactory<Prato, String>("nome"));
-        this.colIngredientes.setCellValueFactory(new PropertyValueFactory<Prato, String>("ingredientes"));
-        this.colPreco.setCellValueFactory(new PropertyValueFactory<Prato, Double>("preco"));
-        this.colImagem.setCellValueFactory(new PropertyValueFactory<Prato, String>("imagem"));
+        this.colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        this.colIngredientes.setCellValueFactory(new PropertyValueFactory<>("ingredientes"));
+        this.colPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        this.colImagem.setCellValueFactory(new PropertyValueFactory<>("imagem"));
         this.colImagem.setCellFactory(this.imgFactory);
         this.colAction.setCellFactory(this.actionFactory);
 
@@ -97,6 +97,8 @@ public class PratoController implements Initializable {
 
     private void atualizarTabela() {
         List<Prato> pratos = this.service.getAll();
+        System.out.println(pratos);
+
         tbPratos.getItems().setAll(pratos);
     }
 

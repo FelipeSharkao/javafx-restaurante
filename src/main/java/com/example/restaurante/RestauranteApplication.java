@@ -1,14 +1,11 @@
 package com.example.restaurante;
 
-import com.example.restaurante.usuario.Usuario;
-import com.example.restaurante.usuario.UsuarioValidator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class RestauranteApplication extends Application {
     public static Stage mainStage = null;

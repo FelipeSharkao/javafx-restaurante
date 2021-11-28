@@ -33,7 +33,7 @@ public class LoginController {
 
         if (usuario != null && usuario.getSenha().equals(senha)) {
             FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("main-view.fxml"));
-            Scene scene = new Scene( fxmlLoader.load());
+            Scene scene = new Scene(fxmlLoader.load());
             RestauranteApplication.mainStage.setMaximized(false);
             RestauranteApplication.mainStage.setScene(scene);
             RestauranteApplication.mainStage.setMaximized(true);
