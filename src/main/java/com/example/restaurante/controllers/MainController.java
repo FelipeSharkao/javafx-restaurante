@@ -14,6 +14,13 @@ public class MainController {
     @FXML
     TabPane tabPane;
 
+    private void addTab(String fxml, String title) throws IOException {
+        Tab tab = new Tab(title);
+        FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource(fxml));
+        tab.setContent(fxmlLoader.load());
+        tabPane.getTabs().add(tab);
+    }
+
     @FXML
     public void sair() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("login-view.fxml"));
@@ -24,18 +31,17 @@ public class MainController {
     }
 
     @FXML
+    public void cardapio() throws IOException {
+        addTab("cardapio-view.fxml", "Cardápio");
+    }
+
+    @FXML
     public void listarUsuarios() throws IOException {
-        Tab tab = new Tab("Cadastro de Usuários");
-        FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("usuarios-view.fxml"));
-        tab.setContent(fxmlLoader.load());
-        tabPane.getTabs().add(tab);
+        addTab("usuarios-view.fxml", "Cadastro de Usuários");
     }
 
     @FXML
     public void listarPratos() throws IOException {
-        Tab tab = new Tab("Cadastro de Pratos");
-        FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("prato-view.fxml"));
-        tab.setContent(fxmlLoader.load());
-        tabPane.getTabs().add(tab);
+        addTab("prato-view.fxml", "Cadastro de Pratos");
     }
 }

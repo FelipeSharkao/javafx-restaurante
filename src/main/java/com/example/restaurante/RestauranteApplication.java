@@ -14,7 +14,7 @@ public class RestauranteApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Gestão de Restaurantes Organizações Tabajara");
+        stage.setTitle("Gestão de Restaurantes");
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();

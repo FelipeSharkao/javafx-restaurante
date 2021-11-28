@@ -7,8 +7,9 @@
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="Arquivo">
+          <Menu mnemonicParsing="false" text="Geral">
             <items>
+              <MenuItem mnemonicParsing="false" onAction="#cardapio" text="Cardápio" />
               <MenuItem mnemonicParsing="false" onAction="#sair" text="Fechar" />
             </items>
           </Menu>
