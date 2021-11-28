@@ -39,7 +39,7 @@ public class UsuarioRepository {
 
     public void update(Usuario usuario) {
         try (PreparedStatement stm = db
-                .prepareStatement("UPDATE usuario SET name = ?, login = ?, senha = ?  WHERE id = ?")) {
+                .prepareStatement("UPDATE usuario SET nome = ?, login = ?, senha = ?  WHERE id = ?")) {
             stm.setString(1, usuario.getNome());
             stm.setString(2, usuario.getLogin());
             stm.setString(3, usuario.getSenha());
@@ -77,7 +77,7 @@ public class UsuarioRepository {
         ArrayList<Usuario> lista = new ArrayList<>();
 
         try (Statement stm = db.createStatement()) {
-            ResultSet result = stm.executeQuery("SELECT (id, nome, login, senha) FROM usuarios");
+            ResultSet result = stm.executeQuery("SELECT id, nome, login, senha FROM usuario");
 
             while (result.next()) {
                 Usuario usuario = new Usuario();
@@ -94,7 +94,7 @@ public class UsuarioRepository {
     }
 
     public void remover(int id) {
-        try (PreparedStatement stm = db.prepareStatement("DELETE FROM usuarios WHERE id = ?")) {
+        try (PreparedStatement stm = db.prepareStatement("DELETE FROM usuario WHERE id = ?")) {
             stm.setInt(1, id);
             stm.execute();
         } catch (SQLException ex) {
