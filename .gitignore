@@ -1,2 +1,5 @@
 .env
 .vscode/
+.idea/
+target/
+*.log
