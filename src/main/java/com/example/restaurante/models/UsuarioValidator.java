@@ -1,6 +1,5 @@
-package com.example.restaurante.usuario;
+package com.example.restaurante.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // Responsável por dizer se uma entidade está válida ou não

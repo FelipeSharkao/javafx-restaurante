@@ -1,8 +1,12 @@
-package com.example.restaurante.usuario;
+package com.example.restaurante.services;
 
 import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
+
+import com.example.restaurante.models.Usuario;
+import com.example.restaurante.models.UsuarioValidator;
+import com.example.restaurante.repos.UsuarioRepository;
 
 // Responsável pelas regras de funcionamento e negócio
 public class UsuarioService {

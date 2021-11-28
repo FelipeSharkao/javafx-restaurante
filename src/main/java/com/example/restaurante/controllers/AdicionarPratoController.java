@@ -1,4 +1,9 @@
-package com.example.restaurante.prato;
+package com.example.restaurante.controllers;
+
+import com.example.restaurante.models.Prato;
+import com.example.restaurante.models.PratoValidator;
+import com.example.restaurante.repos.PratoRepository;
+import com.example.restaurante.services.PratoService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

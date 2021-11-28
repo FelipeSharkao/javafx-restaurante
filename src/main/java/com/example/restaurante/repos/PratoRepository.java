@@ -1,6 +1,7 @@
-package com.example.restaurante.prato;
+package com.example.restaurante.repos;
 
 import com.example.restaurante.MySQLConnection;
+import com.example.restaurante.models.Prato;
 
 import java.sql.*;
 import java.util.ArrayList;

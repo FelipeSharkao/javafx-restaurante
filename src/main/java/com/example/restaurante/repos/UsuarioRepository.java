@@ -1,6 +1,7 @@
-package com.example.restaurante.usuario;
+package com.example.restaurante.repos;
 
 import com.example.restaurante.MySQLConnection;
+import com.example.restaurante.models.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,9 +1,13 @@
-package com.example.restaurante.prato;
+package com.example.restaurante.services;
 
 import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.restaurante.models.Prato;
+import com.example.restaurante.models.PratoValidator;
+import com.example.restaurante.repos.PratoRepository;
 
 public class PratoService {
     private PratoValidator validator;

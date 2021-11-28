@@ -1,4 +1,4 @@
-package com.example.restaurante.usuario;
+package com.example.restaurante.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +10,11 @@ import javafx.util.Callback;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import com.example.restaurante.models.Usuario;
+import com.example.restaurante.models.UsuarioValidator;
+import com.example.restaurante.repos.UsuarioRepository;
+import com.example.restaurante.services.UsuarioService;
 
 public class UsuariosController implements Initializable {
     UsuarioRepository repo = new UsuarioRepository();

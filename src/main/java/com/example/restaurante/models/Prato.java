@@ -1,4 +1,4 @@
-package com.example.restaurante.prato;
+package com.example.restaurante.models;
 
 public class Prato {
     private int id;

@@ -1,4 +1,4 @@
-package com.example.restaurante.usuario;
+package com.example.restaurante.models;
 
 // Representar a Entidade
 // YAGNI -> Você ainda não precisa disso

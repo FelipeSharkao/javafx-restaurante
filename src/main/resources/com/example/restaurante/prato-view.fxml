@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox prefHeight="620.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurante.prato.PratoController">
+<VBox prefHeight="620.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurante.controllers.PratoController">
    <children>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>

@@ -1,4 +1,4 @@
-package com.example.restaurante;
+package com.example.restaurante.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 
 import java.io.IOException;
+
+import com.example.restaurante.RestauranteApplication;
 
 public class MainController {
     @FXML

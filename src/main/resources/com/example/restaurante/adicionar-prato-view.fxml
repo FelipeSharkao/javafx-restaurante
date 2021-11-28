@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.restaurante.prato.AdicionarPratoController" prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.restaurante.controllers.AdicionarPratoController" prefHeight="400.0" prefWidth="600.0">
     <Label text="Nome:" />
     <TextField fx:id="txtNome" />
 

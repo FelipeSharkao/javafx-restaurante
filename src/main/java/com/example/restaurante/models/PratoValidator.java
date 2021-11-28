@@ -1,4 +1,4 @@
-package com.example.restaurante.prato;
+package com.example.restaurante.models;
 
 import java.util.List;
 

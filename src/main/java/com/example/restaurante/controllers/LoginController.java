@@ -1,9 +1,11 @@
-package com.example.restaurante;
+package com.example.restaurante.controllers;
 
-import com.example.restaurante.usuario.Usuario;
-import com.example.restaurante.usuario.UsuarioRepository;
-import com.example.restaurante.usuario.UsuarioService;
-import com.example.restaurante.usuario.UsuarioValidator;
+import com.example.restaurante.RestauranteApplication;
+import com.example.restaurante.models.Usuario;
+import com.example.restaurante.models.UsuarioValidator;
+import com.example.restaurante.repos.UsuarioRepository;
+import com.example.restaurante.services.UsuarioService;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
