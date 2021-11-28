@@ -29,7 +29,11 @@ public class PratoService {
             return;
         }
 
-        this.repository.insert(prato);
+        if (prato.getId() == null) {
+            repository.insert(prato);
+        } else {
+            repository.update(prato);
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText("Prato salvo com sucesso");

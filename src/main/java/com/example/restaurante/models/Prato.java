@@ -1,7 +1,7 @@
 package com.example.restaurante.models;
 
 public class Prato {
-    private int id;
+    private Integer id;
     private String nome;
     private String ingredientes;
     private double preco;
@@ -22,7 +22,7 @@ public class Prato {
         this.preco = preco;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -38,6 +38,21 @@ public class PratoRepository {
         }
     }
 
+    public void update(Prato prato) {
+        try (PreparedStatement stm = db
+                .prepareStatement("UPDATE pratos SET nome = ?, ingredientes = ?, preco = ?, imagem = ? WHERE id = ?")) {
+            stm.setString(1, prato.getNome());
+            stm.setString(2, prato.getIngredientes());
+            stm.setDouble(3, prato.getPreco());
+            stm.setString(4, prato.getImagem());
+            stm.setInt(5, prato.getId());
+
+            stm.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public List<Prato> findAll() {
         try (Statement stm = db.createStatement()) {
 

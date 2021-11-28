@@ -11,11 +11,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AdicionarPratoController {
+public class EditarPratoController {
     PratoRepository repo = new PratoRepository();
     PratoValidator validator = new PratoValidator();
 
     PratoService service = new PratoService(validator, repo);
+
+    Prato prato;
 
     @FXML
     TextField txtNome;
@@ -28,6 +30,15 @@ public class AdicionarPratoController {
 
     @FXML
     TextField txtImagem;
+    
+
+    public void setPrato(Prato prato) {
+        this.prato = prato;
+        txtNome.setText(prato.getNome());
+        txtIngredientes.setText(prato.getIngredientes());
+        txtPreco.setText(Double.toString(prato.getPreco()));
+        txtImagem.setText(prato.getImagem());
+    }
 
     @FXML
     private void salvar() {
@@ -43,11 +54,18 @@ public class AdicionarPratoController {
             return;
         }
 
-        Prato prato = new Prato(
-                this.txtNome.getText(),
-                this.txtIngredientes.getText(),
-                preco,
-                this.txtImagem.getText());
+        if (prato == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Prato não encontrado");
+            alert.setContentText("O prato não foi encontrado");
+            alert.showAndWait();
+            return;
+        }
+        prato.setNome(this.txtNome.getText());
+        prato.setIngredientes(this.txtIngredientes.getText());
+        prato.setPreco(preco);
+        prato.setImagem(this.txtImagem.getText());
 
         this.service.salvar(prato);
 

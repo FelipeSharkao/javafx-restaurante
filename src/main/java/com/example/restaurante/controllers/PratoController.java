@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -49,21 +50,29 @@ public class PratoController implements Initializable {
 
     Callback<TableColumn<Prato, Void>, TableCell<Prato, Void>> actionFactory = param -> new TableCell<>() {
 
-        private final Button btn = new Button("Remover");
-        {
-            btn.setOnAction((ActionEvent event) -> {
-                Prato data = getTableView().getItems().get(getIndex());
-                remover(data.getId());
-            });
-        }
-
         @Override
         public void updateItem(Void item, boolean empty) {
             super.updateItem(item, empty);
+
             if (empty) {
                 setGraphic(null);
             } else {
-                setGraphic(btn);
+                Button btnEdit = new Button("Editar");
+                btnEdit.setOnAction((ActionEvent event) -> {
+                    Prato data = getTableView().getItems().get(getIndex());
+                    editar(data);
+                });
+
+                Button btnDel = new Button("Remover");
+                btnDel.setOnAction((ActionEvent event) -> {
+                    Prato data = getTableView().getItems().get(getIndex());
+                    remover(data.getId());
+                });
+
+                HBox hbox = new HBox(btnEdit, btnDel);
+                hbox.setSpacing(10);
+
+                setGraphic(hbox);
             }
         }
     };
@@ -117,17 +126,27 @@ public class PratoController implements Initializable {
     }
 
     @FXML
-    private void adicionar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("adicionar-prato-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        Stage stage = new Stage();
-        stage.setTitle("Novo Prato");
-        stage.setMaximized(true);
-        stage.setScene(scene);
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(RestauranteApplication.mainStage);
-        stage.showAndWait();
-        this.atualizarTabela();
+    private void adicionar() {
+        this.editar(new Prato("", "", 0.0, ""));
+    }
+
+    private void editar(Prato prato) {
+        FXMLLoader fxmlLoader = new FXMLLoader(RestauranteApplication.class.getResource("editar-prato-view.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            ((EditarPratoController) fxmlLoader.getController()).setPrato(prato);
+
+            Stage stage = new Stage();
+            stage.setTitle("Novo Prato");
+            stage.setMaximized(true);
+            stage.setScene(scene);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(RestauranteApplication.mainStage);
+            stage.showAndWait();
+            this.atualizarTabela();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }
