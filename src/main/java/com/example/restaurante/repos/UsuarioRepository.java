@@ -9,15 +9,20 @@ import java.util.List;
 
 // responsável por guardar e recuperar um dado
 public class UsuarioRepository {
-    /**
-     *
-     */
-    private static final String EX_HEADER = "[EXCEPTION]";
     private Connection db;
 
     public UsuarioRepository() {
         MySQLConnection mysql = new MySQLConnection();
         db = mysql.getConnection();
+
+        try (PreparedStatement stm = db.prepareStatement(
+                "CREATE TABLE IF NOT EXISTS `usuario` (`id` int(11) NOT NULL AUTO_INCREMENT, `nome` varchar(45) NOT NULL, `login` varchar(45) NOT NULL, `senha` varchar(25) NOT NULL, PRIMARY KEY (`id`))")) {
+            stm.execute();
+        } catch (SQLException e) {
+            System.err.println("Erro ao criar tabela usuario");
+            System.err.println(e.getMessage());
+            System.exit(1);
+        }
     }
 
     public void insert(Usuario usuario) {

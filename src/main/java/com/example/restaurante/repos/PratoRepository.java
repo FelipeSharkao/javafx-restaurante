@@ -13,6 +13,15 @@ public class PratoRepository {
     public PratoRepository() {
         MySQLConnection mysql = new MySQLConnection();
         db = mysql.getConnection();
+
+        try (PreparedStatement stm = db.prepareStatement(
+                "CREATE TABLE IF NOT EXISTS `pratos` (`id` int(11) NOT NULL AUTO_INCREMENT, `nome` varchar(255) DEFAULT NULL, `ingredientes` text, `preco` double DEFAULT NULL, `imagem` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`))")) {
+            stm.execute();
+        } catch (SQLException e) {
+            System.err.println("Erro ao criar tabela pratos");
+            System.err.println(e.getMessage());
+            System.exit(1);
+        }
     }
 
     public void insert(Prato prato) {
