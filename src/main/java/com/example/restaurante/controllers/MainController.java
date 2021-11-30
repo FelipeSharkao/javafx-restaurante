@@ -36,6 +36,11 @@ public class MainController {
     }
 
     @FXML
+    public void mesas() throws IOException {
+        addTab("mesas-view.fxml", "Mesas");
+    }
+
+    @FXML
     public void listarUsuarios() throws IOException {
         addTab("usuarios-view.fxml", "Cadastro de Usuários");
     }
@@ -43,5 +48,10 @@ public class MainController {
     @FXML
     public void listarPratos() throws IOException {
         addTab("prato-view.fxml", "Cadastro de Pratos");
+    }
+    
+    @FXML
+    public void listarMesas() throws IOException {
+        addTab("adm-mesas-view.fxml", "Cadastro de Pratos");
     }
 }

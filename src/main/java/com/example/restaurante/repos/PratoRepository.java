@@ -40,7 +40,8 @@ public class PratoRepository {
 
     public void update(Prato prato) {
         try (PreparedStatement stm = db
-                .prepareStatement("UPDATE pratos SET nome = ?, ingredientes = ?, preco = ?, imagem = ? WHERE id = ?")) {
+                .prepareStatement("UPDATE pratos SET nome = ?, ingredientes = ?, preco = ?, imagem = ? WHERE id = ?",
+                        Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, prato.getNome());
             stm.setString(2, prato.getIngredientes());
             stm.setDouble(3, prato.getPreco());
@@ -48,6 +49,10 @@ public class PratoRepository {
             stm.setInt(5, prato.getId());
 
             stm.execute();
+            ResultSet rs = stm.getGeneratedKeys();
+            if (rs.next()) {
+                prato.setId(rs.getInt(1));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane orientation="VERTICAL" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.restaurante.controllers.AdmMesasController">
+  <items>
+     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+        <children>
+           <HBox prefHeight="52.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                 <Label text="Número: ">
+                    <HBox.margin>
+                       <Insets left="5.0" />
+                    </HBox.margin>
+                 </Label>
+                 <TextField fx:id="txtNumero" />
+                 <Button mnemonicParsing="false" text="Salvar" onAction="#salvar">
+                    <HBox.margin>
+                       <Insets left="10.0" />
+                    </HBox.margin>
+                 </Button>
+              </children>
+              <padding>
+                 <Insets bottom="10.0" left="5.0" top="10.0" />
+              </padding>
+           </HBox>
+        </children>
+     </AnchorPane>
+     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="598.0">
+        <children>
+           <TableView fx:id="tbMesas" editable="true" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                 <TableColumn fx:id="colNumero" prefWidth="400.0" text="Numero" />
+                 <TableColumn fx:id="colOcupado" prefWidth="100.0" text="Ocupado" />
+                 <TableColumn fx:id="colAtivo" prefWidth="100.0" text="Ativo" />
+                 <TableColumn fx:id="colAction" prefWidth="400.0" text="" />
+              </columns>
+              <columnResizePolicy>
+                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+              </columnResizePolicy>
+           </TableView>
+        </children>
+     </AnchorPane>
+  </items>
+</SplitPane>
